@@ -1,0 +1,27 @@
+.popup__btn {
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  color: #FFFFFF;
+  font-family: inherit;
+  height: 50px;
+  background-color: black;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background-color 0.2s;
+  padding: 0;
+}
+
+.popup__btn:hover {
+ background-color: rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 500px) {
+  .popup__btn {
+    font-size: 14px;
+    line-height: 17px;
+    height: 46px;
+  }
+}

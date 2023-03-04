@@ -1,0 +1,17 @@
+.profile__info {
+  align-self: center;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .profile__info {
+    max-width: calc(100% - 52px);
+  }
+}
+
+@media (max-width: 500px) {
+  .profile__info {
+    max-width: calc(100% - 38px);
+  }
+}
+
