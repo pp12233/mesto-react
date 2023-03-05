@@ -1,5 +1,5 @@
-import React from 'react';
-import api from './utils/api.js';
+import { useEffect, useState } from 'react';
+import api from '../utils/api.js';
 import Card from './Card';
 
 function Main({
@@ -8,12 +8,12 @@ function Main({
   onEditAvatar,
   onCardClick,
 }) {
-  const [userName, setUserName] = React.useState('');
-  const [userDescription, setUserDescription] = React.useState('');
-  const [userAvatar, setUserAvatar] = React.useState('');
-  const [cards, setCards] = React.useState([]);
+  const [userName, setUserName] = useState('');
+  const [userDescription, setUserDescription] = useState('');
+  const [userAvatar, setUserAvatar] = useState('');
+  const [cards, setCards] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     Promise.all([api.getUserInfo(), api.getCards()])
       .then(([user, cards]) => {
         setUserName(user.name);
@@ -30,7 +30,7 @@ function Main({
     <div className="container">
       <section className="profile">
         <img
-          style={{ backgroundImage: `url(${userAvatar})` }}
+          src={userAvatar}
           className="profile__image"
           alt="профиль"
         />

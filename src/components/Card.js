@@ -9,7 +9,7 @@ function Card({ card, onCardClick }) {
     <li className="elements__item" key={card._id}>
       <button type="button" className="elements__trash"></button>
       <img
-        style={{ backgroundImage: `url(${card.link})` }}
+        src={card.link}
         alt={card.name}
         className="elements__image"
         onClick={handleClick}

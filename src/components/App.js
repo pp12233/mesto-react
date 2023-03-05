@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
@@ -7,23 +7,23 @@ import ImagePopup from './ImagePopup';
 
 function App() {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] =
-    React.useState(false);
+    useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] =
-    React.useState(false);
+    useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] =
-    React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState({});
+    useState(false);
+  const [selectedCard, setSelectedCard] = useState({});
 
   const handleEditProfileClick = () => {
-    setIsEditProfilePopupOpen('popup_opened');
+    setIsEditProfilePopupOpen(true);
   };
 
   const handleAddPlaceClick = () => {
-    setIsAddPlacePopupOpen('popup_opened');
+    setIsAddPlacePopupOpen(true);
   };
 
   const handleEditAvatarClick = () => {
-    setIsEditAvatarPopupOpen('popup_opened');
+    setIsEditAvatarPopupOpen(true);
   };
 
   const handleCardClick = (card) => {
@@ -131,23 +131,6 @@ function App() {
         </PopupWithForm>
         <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         <Footer />
-        <template id="mesto">
-          <li className="elements__item">
-            <img
-              src="<%=require('./images/Trash.svg')%>"
-              alt="корзина"
-              className="elements__trash"
-            />
-            <img src="#" alt="#" className="elements__image" />
-            <div className="elements__card">
-              <h2 className="elements__text"></h2>
-              <button
-                type="button"
-                className="elements__button"></button>
-              <p className="elements__counter"></p>
-            </div>
-          </li>
-        </template>
       </div>
     </div>
   );
