@@ -22,13 +22,13 @@ class Api {
     });
 
   //2. Загрузка карточек с сервера
-  getCards = () =>
+  getCardList = () =>
     this._request(this._baseUrl + '/cards', {
       headers: this._headers,
     });
 
   //3. Редактирование профиля
-  editingUser = (data) =>
+  setUserInfo = (data) =>
     this._request(this._baseUrl + '/users/me', {
       method: 'PATCH',
       headers: this._headers,
@@ -50,22 +50,28 @@ class Api {
       headers: this._headers,
     });
 
-  //8. Постановка лайка
-  settingLike = (_id) =>
-    this._request(this._baseUrl + '/cards/' + _id + '/likes', {
-      method: 'PUT',
-      headers: this._headers,
-    });
-
-  //8. Снятие лайка
-  removingLike = (_id) =>
-    this._request(this._baseUrl + '/cards/' + _id + '/likes', {
-      method: 'DELETE',
-      headers: this._headers,
-    });
+  changeLikeCardStatus(_id, isLiked) {
+    if (isLiked) {
+      return this._request(
+        this._baseUrl + '/cards/' + _id + '/likes',
+        {
+          method: 'PUT',
+          headers: this._headers,
+        },
+      );
+    } else {
+      return this._request(
+        this._baseUrl + '/cards/' + _id + '/likes',
+        {
+          method: 'DELETE',
+          headers: this._headers,
+        },
+      );
+    }
+  }
 
   //9. Обновление аватара пользователя
-  updateAvatar = (data) =>
+  setUserAvatar = (data) =>
     this._request(this._baseUrl + '/users/me/avatar', {
       method: 'PATCH',
       headers: this._headers,

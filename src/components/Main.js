@@ -1,36 +1,23 @@
-import { useEffect, useState } from 'react';
-import api from '../utils/api.js';
+import { useContext } from 'react';
 import Card from './Card';
+import CurrentUserContext from '../contexts/CurrentUserContext.js';
 
-function Main({
+export default function Main({
+  cards,
   onEditProfile,
   onAddPlace,
   onEditAvatar,
   onCardClick,
+  onCardDelete,
+  onCardLike,
 }) {
-  const [userName, setUserName] = useState('');
-  const [userDescription, setUserDescription] = useState('');
-  const [userAvatar, setUserAvatar] = useState('');
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getCards()])
-      .then(([user, cards]) => {
-        setUserName(user.name);
-        setUserDescription(user.about);
-        setUserAvatar(user.avatar);
-        setCards(cards);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const currentUser = useContext(CurrentUserContext);
 
   return (
     <div className="container">
       <section className="profile">
         <img
-          src={userAvatar}
+          src={`${currentUser.avatar}`}
           className="profile__image"
           alt="профиль"
         />
@@ -39,13 +26,13 @@ function Main({
           onClick={onEditAvatar}></div>
         <div className="profile__info">
           <div className="profile__line">
-            <h1 className="profile__name">{userName}</h1>
+            <h1 className="profile__name">{currentUser.name}</h1>
             <button
               type="button"
               className="profile__edit"
               onClick={onEditProfile}></button>
           </div>
-          <p className="profile__content">{userDescription}</p>
+          <p className="profile__content">{currentUser.about}</p>
         </div>
         <button
           type="button"
@@ -58,10 +45,12 @@ function Main({
             return (
               <Card
                 card={card}
-                onCardClick={onCardClick}
                 key={card._id}
                 link={card.link}
                 name={card.name}
+                onCardClick={onCardClick}
+                onCardLike={onCardLike}
+                onCardDelete={onCardDelete}
               />
             );
           })}
@@ -82,5 +71,3 @@ function Main({
     </div>
   );
 }
-
-export default Main;
