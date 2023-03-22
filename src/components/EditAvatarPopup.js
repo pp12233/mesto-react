@@ -24,20 +24,18 @@ export default function EditAvatarPopup({
       title="Обновить аватар"
       buttonText={onChanging ? 'Сохранение...' : 'Сохранить'}
       onSubmit={handleSubmit}>
-      <>
-        <input
-          className="popup__input popup__input_type_link"
-          name="link"
-          type="url"
-          minLength="2"
-          maxLength="200"
-          id="link-avatar"
-          placeholder="Ссылка на аватар"
-          required
-          ref={avatar}
-        />
-        <span className="link-avatar-error popup__input-error"></span>
-      </>
+      <input
+        className="popup__input popup__input_type_link"
+        name="link"
+        type="url"
+        minLength="2"
+        maxLength="200"
+        id="link-avatar"
+        placeholder="Ссылка на аватар"
+        required
+        ref={avatar}
+      />
+      <span className="link-avatar-error popup__input-error"></span>
     </PopupWithForm>
   );
 }

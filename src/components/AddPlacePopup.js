@@ -31,34 +31,32 @@ export default function AddPlacePopup({
       title="Новое место"
       buttonText={onChanging ? 'Создание...' : 'Создать'}
       onSubmit={handleSubmit}>
-      <>
-        <input
-          className="popup__input popup__input_type_city"
-          name="city"
-          type="text"
-          minLength="2"
-          maxLength="30"
-          id="city-input"
-          placeholder="Название"
-          required
-          onChange={handleChange}
-          value={values.title || ''}
-        />
-        <span className="city-input-error popup__input-error"></span>
-        <input
-          className="popup__input popup__input_type_link"
-          name="link"
-          type="url"
-          minLength="2"
-          maxLength="200"
-          id="link-input"
-          placeholder="Ссылка на картинку"
-          required
-          onChange={handleChange}
-          value={values.link || ''}
-        />
-        <span className="link-input-error popup__input-error"></span>
-      </>
+      <input
+        className="popup__input popup__input_type_city"
+        name="city"
+        type="text"
+        minLength="2"
+        maxLength="30"
+        id="city-input"
+        placeholder="Название"
+        required
+        onChange={handleChange}
+        value={values.title || ''}
+      />
+      <span className="city-input-error popup__input-error"></span>
+      <input
+        className="popup__input popup__input_type_link"
+        name="link"
+        type="url"
+        minLength="2"
+        maxLength="200"
+        id="link-input"
+        placeholder="Ссылка на картинку"
+        required
+        onChange={handleChange}
+        value={values.link || ''}
+      />
+      <span className="link-input-error popup__input-error"></span>
     </PopupWithForm>
   );
 }
